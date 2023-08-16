@@ -1,5 +1,5 @@
-## [10826] 피보나치 수 6
-
+## [BOJ_10826](깃헙링크) 피보나치 수 4
+[BOJ_1234](https://github.com/SeongukBaek/algoStudy/tree/main/BOJ/%5B10282%5D%20%ED%95%B4%ED%82%B9/SUbbb)
 ### 📌 Algorithm
 
 D.P
