@@ -1,5 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>메인 화면</h1>
+<h1>This is Index</h1>
+{% for post in posts %}
+
+    <div class="card col-4">
+    <div class="card-body">
+        <p>{{post.content}}</p>
+        <form action="{% url 'posts:delete' post.pk%}" method="POST">
+            {% csrf_token %}
+        <input type="submit" value = "Delete" class="btn btn-danger">
+    </div>
+</div>
+
+    
+{% endfor %}
 {% endblock content %}
