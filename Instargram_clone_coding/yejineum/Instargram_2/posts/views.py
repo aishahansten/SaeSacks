@@ -26,6 +26,6 @@ def create(request):
     return render(request, 'posts/create.html', context)
 
 def delete(request, post_pk):
-    post = Post.objects.get(pk=post_pk):
+    post = Post.objects.get(pk=post_pk)
     post.delete()
     return redirect('posts:index')
