@@ -17,7 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# settings.MEDIA_URL : 업로드 된 파일의 URL
+# settings.MEDIA_ROOT : URL을 통해 참조하는 파일의 실제 위치
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('posts/', include('posts.urls'))
-]
+    path("admin/", admin.site.urls),
+    path("posts/", include("posts.urls")),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
