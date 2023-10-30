@@ -28,3 +28,19 @@ def delete(request, post_pk):
     post = Post.objects.get(pk=post_pk)
     post.delete()
     return redirect("posts:index")
+
+
+def update(request, post_pk):
+    post = Post.objects.get(pk=post_pk)
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid:
+            form.save()
+            return redirect("posts:index")
+    else:
+        form = PostForm(instance=post)
+    context = {
+        "post": post,
+        "form": form,
+    }
+    return render(request, "posts/update.html", context)
