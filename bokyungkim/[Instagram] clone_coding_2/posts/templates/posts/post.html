@@ -1,0 +1,12 @@
+
+
+{% for post in posts %}
+<p>{{post.content}}</p>
+<form action="{% url 'posts:delete' post.pk %}" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="DELETE">
+</form>
+{% endfor %}
+
+
+
