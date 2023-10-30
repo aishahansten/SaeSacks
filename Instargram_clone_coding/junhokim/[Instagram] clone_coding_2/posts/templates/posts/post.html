@@ -1,0 +1,11 @@
+{% for post in posts %}
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <p>{{ post.content }}</p>
+      <form action="{% url "posts:delete" post.pk %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form> 
+    </div>
+  </div>
+{% endfor %}
