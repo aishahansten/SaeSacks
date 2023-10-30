@@ -2,6 +2,9 @@
 {% for post in posts %}
 <div class="card" style="width: 18rem;">
     <div class="card-body">
+        {% if post.image %}
+            <img src="{{ post.image.url }}" class="card-img-top" alt='img'>
+        {% endif %}
         {{ post.content }}
         <p></p>
         <form action="{% url "posts:delete" post.pk %}" method="POST">
