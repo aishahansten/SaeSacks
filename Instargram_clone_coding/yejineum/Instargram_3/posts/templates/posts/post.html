@@ -7,6 +7,11 @@
         {% endif %}
         {{ post.content }}
         <p></p>
+
+        <a href="{% url 'posts:update' post.pk %}">
+            <button type="button" class="btn btn-info">Edit</button>
+        </a>
+
         <form action="{% url "posts:delete" post.pk %}" method="POST">
             {% csrf_token %}
             <button type="submit" class="btn btn-danger">Delete</button>

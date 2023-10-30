@@ -21,7 +21,7 @@ def create(request):
     context = {
         "form": form,
     }
-    return render(request, "posts/create.html", context)
+    return render(request, "posts/form.html", context)
 
 
 def delete(request, post_pk):
@@ -43,4 +43,4 @@ def update(request, post_pk):
         "post": post,
         "form": form,
     }
-    return render(request, "posts/update.html", context)
+    return render(request, "posts/form.html", context)
