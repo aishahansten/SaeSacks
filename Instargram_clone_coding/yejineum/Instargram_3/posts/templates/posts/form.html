@@ -4,7 +4,7 @@
 {% block content %}
     <h1>New Post</h1>
     
-    <form action="{% url "posts:create" %}" method="POST" enctype="multipart/form-data">
+    <form action="{% if post %}{% url "posts:update" post.pk %}{% else %}{% url "posts:create" %}{% endif %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {% bootstrap_form form %}
         <button type="submit" class="btn btn-primary">Submit</button>
