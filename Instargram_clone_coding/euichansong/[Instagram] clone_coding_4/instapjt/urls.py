@@ -23,9 +23,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # posts로 가는 경로
+    # post로 가는 경로
     path('posts/', include('posts.urls')),
-    # accounts로 가는 경로
     path('accounts/', include('accounts.urls')),
     # 이미지 파일에 대한 URL 지정
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
