@@ -1,5 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h1>Log in</h1>
+<form action="{% url "accounts:login" %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
 
+{% comment %} 
+로그아웃 폼
+<form action="{% url "accounts:logout" %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Log out">
+</form> 
+{% endcomment %}
 {% endblock content %}
