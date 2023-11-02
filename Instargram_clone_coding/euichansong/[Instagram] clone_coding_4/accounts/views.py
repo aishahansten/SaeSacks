@@ -27,14 +27,19 @@ def logout(request):
     
 
 def signup(request):
-    if request.mehtod=="POST":
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('posts:index')
+    if request.user.is_authenticated:
+        return redirect('posts:index')
     else:
-        form = CustomUserCreationForm()
-    context = {
-        'form': form,
-    }
-    return render(request, 'accounts/signup.html', context)
+        if request.method=="POST":
+            form = CustomUserCreationForm(request.POST)
+            if form.is_valid():
+                # 회원가입시 자동 로그인
+                user = form.save()
+                auth_login(request, user)
+                return redirect('posts:index')
+        else:
+            form = CustomUserCreationForm()
+        context = {
+            'form': form,
+        }
+        return render(request, 'accounts/signup.html', context)

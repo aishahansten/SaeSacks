@@ -35,6 +35,19 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Followings</a>
           </li>
+          {% comment %} 로그인한 사용자면 logout 아니면 로그인 과 회원가입 {% endcomment %}
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "accounts:logout" %}">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "accounts:login" %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "accounts:signup" %}">Sign Up</a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </nav>

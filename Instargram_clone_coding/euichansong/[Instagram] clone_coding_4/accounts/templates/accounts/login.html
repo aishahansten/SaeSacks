@@ -1,12 +1,16 @@
 {% extends "base.html" %}
-
+{% load django_bootstrap5 %}
 {% block content %}
 <h1>Log in</h1>
+<div style="display: flex; gap: 10px;">
 <form action="{% url "accounts:login" %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" class="btn btn-primary">
+    <button class="btn btn-success" onclick="location.href='{% url "accounts:signup" %}' ">Sign up</button>
 </form>
+
+</div>
 
 {% comment %} 
 로그아웃 폼
