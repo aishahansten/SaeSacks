@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block content %}
+<h1>회원 탈퇴</h1>
+<p>탈퇴하면 회원 정보를 복구할 수 없습니다.</p>
+<p>정말로 탈퇴하시겠습니까?</p>
+<form action="{% url "accounts:delete" %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="탈퇴" class="btn btn-danger">
+</form>
+{% endblock content %}

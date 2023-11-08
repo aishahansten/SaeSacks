@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block content %}
+{% comment %} 로그인 한 경우 {% endcomment %}
+{% if request.user.is_authenticated %}
+<h1>Hello!</h1>
+
+<div style="display: flex;">
+{% comment %} 
+로그아웃 폼
+{% endcomment %}
+<form action="{% url "accounts:logout" %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Log out" class="btn btn-secondary">
+</form> 
+
+<form action="{% url "accounts:update" %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="프로필 수정" class="btn btn-warning">
+</form> 
+{% comment %} 비밀번호 변경 url 수정 필요
+<form action="{% url "accounts:logout" %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="비밀번호 변경" class="btn btn-primary">
+</form>  {% endcomment %}
+{% comment %} <a href='../accounts/delete/'> 이렇게 작성하면 주소에 html이 찍힌다 {% endcomment %}
+<a href='/accounts/delete/'>
+<button class="btn btn-danger">회원 탈퇴</button>
+</a>
+
+</div>
+{% comment %} 로그인 되지 않은 경우 {% endcomment %}
+{% else %}
+<h1>This is Index</h1>
+<div>
+<form action="{% url "accounts:login" %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Log in" class="btn btn-primary">
+</div>
+{% endif %}
+{% include "posts/post.html" %}
+
+
+{% endblock content %}

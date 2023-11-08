@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% comment %} load 하려면 settings에 추가 해줘야 한다 {% endcomment %}
+{% load django_bootstrap5 %}
+{% block content %}
+<h1>New Post</h1>
+{% comment %} post가 존재하는 경우 update url로 존재하지 않는다면 create로 {% endcomment %}
+<form action="{% if post %}{% url "posts:update" post.pk %}{% else %}{% url "posts:create" %}{% endif %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" class="btn btn-primary">
+</form>
+{% endblock content %}
