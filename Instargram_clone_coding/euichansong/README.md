@@ -40,6 +40,9 @@
 - 여전히 bootstrap을 사용하는건 어렵다. edit 옆에 delete가 있어야 하는데 밑으로 갔다. 다른 실습에서는 form을 안쓰고 버튼을 써서 해결했는데 form을 쓰는 방법으로 해결할 수 있지 않을까 싶다.
 - 2에서 넘어갔던 post.html 만들었고 include를 사용했다
 - edit가 안되는 문제가 있었다. 원인은 form.html로 create와 update를 합치면서 경로를 create로 해줬기 때문에 수정할때마다 수정이 안되고 생성이 됬었다. 이를 해결하기 위해 url 지정 부분에 post가 존재하면 update로 연결 그렇지 않으면 create로 지정해서 문제를 해결했다. thanks to 예진
+- post.html에서 form 태그 쓰면 원본이 나오지 않았다 메서드 문제였다.
+다른 팀원들은 각각 버튼, a 태그 로 했는데 원본이 나왔고 form 태그사용한 팀원은 원본이 나오지 않았다 차이점은 메서드 밖에 없었다. 
+- 실험해본 결과 form에서 method를 get으로 바꾸거나 method 자체를 지우면 원본이 나왔다. 메서드 방식도 생각 해봐야 될거 같다
   
 </details>
 

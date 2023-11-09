@@ -12,7 +12,7 @@
             <p>{{ post.content }}</p>
         </div>
         {% comment %} 방법 1. form태그 
-        <form action="{% url "posts:update" post.pk %}" method="POST">
+        <form action="{% url "posts:update" post.pk %}">
             {% csrf_token %}
         <input type="submit" value="Edit" class="btn btn-info">
         </form>
