@@ -7,11 +7,20 @@
 
 <div class="card w-50">
   <div class="card-body">
-    <form action="{% url 'posts:create' %}" method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{form.as_p}}
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    {% if post %}
+      <form action="{% url 'posts:update' post.pk %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    {% else %}
+      <form action="{% url 'posts:create' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{form.as_p}}
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+    {% endif %}
   
   </div>
 </div>

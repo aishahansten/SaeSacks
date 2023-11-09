@@ -41,7 +41,7 @@ def update(request, pk):
             form.save()
             return redirect('posts:index')
     else:
-        form = PostForm()
+        form = PostForm(instance=post)
     context = {
         'form':form,
         'post':post

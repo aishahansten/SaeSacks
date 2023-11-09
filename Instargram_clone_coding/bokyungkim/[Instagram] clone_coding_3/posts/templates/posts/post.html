@@ -1,20 +1,31 @@
 {% for post in posts %}
 <div class="card w-50">
   <div class="card-body">
+    {% if post.image %}
     <img src="{{post.image.url}}" alt="img">
+    {%endif%}
     <p>{{post.content}}</p>
     <div>
-      <form action="{% url 'posts:update' post.pk %}" method="POST">
+      <!--method="GET"으로 받아야 Edit시 기존 작성 내용이 보임 -->
+      <!--1. form 태그 사용-->
+      <form action="{% url 'posts:update' post.pk %}" method="GET">
         {% csrf_token %}
         <button type="submit" class="btn btn-info">Edit</button>
       </form>
+      
+      <!--2. Button 태그 사용-->
+      {% comment %} <button type="button" onclick="location.href='{% url "posts:update" post.pk %}'" class="btn btn-info">Edit</button>
+
+      <!--3. a 태그 사용-->
+      <a href="{% url 'posts:update' post.pk %}">
+        <button type="button" class="btn btn-info">Edit</button>
+      </a> {% endcomment %}
       <form action="{% url 'posts:delete' post.pk %}" method="POST">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">DELETE</button>
       </form>
-      
-      
     </div>
+    
     
   </div>
 </div>
